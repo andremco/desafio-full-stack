@@ -7,11 +7,11 @@ namespace CustomCountries.API.Controllers.v1
     [AllowAnonymous]
     [ApiController]
     [Route("api/v1/github")]
-    public class GitHubController : ControllerBase
+    public class GithubController : ControllerBase
     {
         private readonly IGithubService _githubService;
 
-        public GitHubController(IGithubService githubService)
+        public GithubController(IGithubService githubService)
         {
             _githubService = githubService;
         }
