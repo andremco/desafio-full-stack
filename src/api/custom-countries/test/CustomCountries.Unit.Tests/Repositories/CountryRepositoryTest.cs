@@ -26,7 +26,7 @@ namespace CustomCountries.Unit.Tests.Repositories
         public async Task FindOneAsync_ShouldInsertTest()
         {
             var countryFaker = CountryMock.CountryFaker.Generate();
-            _mongoDatabase.Setup(m => m.GetCollection<Country>("countries", null)).Returns(_mongoCollection.Object);
+            _mongoDatabase.Setup(m => m.GetCollection<Country>(It.IsAny<string>(), null)).Returns(_mongoCollection.Object);
             _mongoClientMock.Setup(m => m.GetDatabase(It.IsAny<string>(), null)).Returns(_mongoDatabase.Object);
 
             var countryRepository = new CountryRepository(_mongoClientMock.Object, "test");
@@ -34,10 +34,21 @@ namespace CustomCountries.Unit.Tests.Repositories
         }
 
         [Fact]
+        public async Task FindOneAsync_ShouldUpdateTest()
+        {
+            var countryFaker = CountryMock.CountryFaker.Generate();
+            _mongoDatabase.Setup(m => m.GetCollection<Country>(It.IsAny<string>(), null)).Returns(_mongoCollection.Object);
+            _mongoClientMock.Setup(m => m.GetDatabase(It.IsAny<string>(), null)).Returns(_mongoDatabase.Object);
+
+            var countryRepository = new CountryRepository(_mongoClientMock.Object, "test");
+            await countryRepository.ReplaceOneAsync(countryFaker);
+        }
+
+        [Fact]
         public async Task DeleteByIdAsync_ShouldDeleteTest()
         {
             var countryFaker = CountryMock.CountryFaker.Generate();
-            _mongoDatabase.Setup(m => m.GetCollection<Country>("countries", null)).Returns(_mongoCollection.Object);
+            _mongoDatabase.Setup(m => m.GetCollection<Country>(It.IsAny<string>(), null)).Returns(_mongoCollection.Object);
             _mongoClientMock.Setup(m => m.GetDatabase(It.IsAny<string>(), null)).Returns(_mongoDatabase.Object);
 
             var countryRepository = new CountryRepository(_mongoClientMock.Object, "test");

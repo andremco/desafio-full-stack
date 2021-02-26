@@ -1,6 +1,8 @@
-﻿namespace CustomCountries.Domain.Interfaces.Repositories
+﻿using CustomCountries.Domain.Models.Country;
+
+namespace CustomCountries.Domain.Interfaces.Repositories
 {
-    public interface ICountryRepository
+    public interface ICountryRepository : IMongoRepository<Country>
     {
     }
 }

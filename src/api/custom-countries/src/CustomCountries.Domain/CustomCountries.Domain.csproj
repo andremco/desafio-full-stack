@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.5.1" />
     <PackageReference Include="MongoDB.Bson" Version="2.11.6" />
   </ItemGroup>
 

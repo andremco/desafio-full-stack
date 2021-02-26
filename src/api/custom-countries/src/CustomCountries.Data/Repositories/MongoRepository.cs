@@ -41,6 +41,12 @@ namespace CustomCountries.Data.Repositories
             return _collection.Find(filterExpression).ToEnumerable();
         }
 
+        public async Task<IEnumerable<TDocument>> FilterByAsync(Expression<Func<TDocument, bool>> filterExpression)
+        {
+            var collection = await _collection.FindAsync(filterExpression);
+            return collection.ToEnumerable();
+        }
+
         public virtual IEnumerable<TProjected> FilterBy<TProjected>(
             Expression<Func<TDocument, bool>> filterExpression,
             Expression<Func<TDocument, TProjected>> projectionExpression)
