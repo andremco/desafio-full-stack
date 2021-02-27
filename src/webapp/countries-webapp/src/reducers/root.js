@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { loading } from "./loading";
 import { error } from "./error";
-import { countries } from "./countries";
+import { countries } from "./country";
 
 const rootReducer = combineReducers({ 
     loading,
