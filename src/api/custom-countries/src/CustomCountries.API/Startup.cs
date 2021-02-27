@@ -95,6 +95,13 @@ namespace CustomCountries.API
                 });
             }
 
+            services.AddCors(o => o.AddPolicy("PolicyAPI", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             // If using Kestrel:
             services.Configure<Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions>(options =>
             {
@@ -152,6 +159,8 @@ namespace CustomCountries.API
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseCors("PolicyAPI");
 
             app.UseEndpoints(endpoints =>
             {

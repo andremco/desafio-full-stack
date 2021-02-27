@@ -43,15 +43,16 @@ namespace CustomCountries.Application.Services
                 return countryViewModel;
             }
 
-            var country = await _countryRepository.FindOneAsync(c => c.Name == model.Name && c.Capital == model.Capital);
+            var country = await _countryRepository.FindOneAsync(c => c.CountryId == model.CountryId);
 
             if (country == null)
             {
-                await _countryRepository.InsertOneAsync(country);
+                await _countryRepository.InsertOneAsync(model);
             }
             else
             {
-                await _countryRepository.ReplaceOneAsync(country);
+                model.Id = country.Id;
+                await _countryRepository.ReplaceOneAsync(model);
             }
 
             return countryViewModel;
