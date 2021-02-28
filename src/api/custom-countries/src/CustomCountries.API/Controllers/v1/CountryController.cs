@@ -40,7 +40,7 @@ namespace CustomCountries.API.Controllers.v1
                 return Ok(countries);
             }
 
-            return NotFound();
+            return NoContent();
         }
 
         /// <summary>
