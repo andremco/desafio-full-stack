@@ -14,21 +14,15 @@ export function countries(state = initialState.countries, action) {
             return nextState
         }
         case types.countries.UPDATE: {
-            const { countries, country } = action
+            const { country } = action
             let nextState = state
-            if (Array.isArray(countries)) {
-                for (let c of countries) {
-                    if (c.id && nextState[c.id]) {
-                        nextState[c.id].name = c.name
-                        nextState[c.id].capital = c.capital
-                        nextState[c.id].isModified = true
-                    }
-                }
-            }
-            
+
             if (country && country.id && nextState[country.id]) {
                 nextState[country.id].name = country.name
                 nextState[country.id].capital = country.capital
+                nextState[country.id].area = country.area
+                nextState[country.id].population = country.population
+                nextState[country.id].populationDensity = country.populationDensity
                 nextState[country.id].isModified = true
             }
             return nextState

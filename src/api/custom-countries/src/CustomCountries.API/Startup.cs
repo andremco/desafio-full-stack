@@ -1,5 +1,6 @@
 using CustomCountries.API.Auth;
 using CustomCountries.API.Filters;
+using CustomCountries.API.Middlewares;
 using CustomCountries.Application.AutoMapper;
 using CustomCountries.Application.Services;
 using CustomCountries.Application.Services.Interfaces;
@@ -161,6 +162,11 @@ namespace CustomCountries.API
             app.UseAuthorization();
 
             app.UseCors("PolicyAPI");
+
+            app.UseExceptionHandler(new ExceptionHandlerOptions
+            {
+                ExceptionHandler = new ErrorHandlerMiddleware(env).Invoke
+            });
 
             app.UseEndpoints(endpoints =>
             {

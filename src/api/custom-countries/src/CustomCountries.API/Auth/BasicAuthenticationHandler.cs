@@ -25,7 +25,7 @@ namespace CustomCountries.API.Auth
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             if (!Request.Headers.ContainsKey("Authorization"))
-                return AuthenticateResult.Fail("Missing Authorization Header");
+                return await Task.FromResult(AuthenticateResult.Fail("Missing Authorization Header"));
 
             string username = string.Empty;
             string password = string.Empty;
@@ -39,15 +39,15 @@ namespace CustomCountries.API.Auth
                 password = credentials[1];
 
                 if (username != "admin" && password != "123456")
-                    return AuthenticateResult.Fail("Not Allowed");
+                    return await Task.FromResult(AuthenticateResult.Fail("Not Allowed"));
             }
             catch
             {
-                return AuthenticateResult.Fail("Invalid Authorization Header");
+                return await Task.FromResult(AuthenticateResult.Fail("Invalid Authorization Header"));
             }
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                return AuthenticateResult.Fail("Invalid Username or Password");
+                return await Task.FromResult(AuthenticateResult.Fail("Invalid Username or Password"));
 
             var claims = new[] {
                 new Claim(ClaimTypes.NameIdentifier, "1"),
@@ -57,7 +57,7 @@ namespace CustomCountries.API.Auth
             var principal = new ClaimsPrincipal(identity);
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
-            return AuthenticateResult.Success(ticket);
+            return await Task.FromResult(AuthenticateResult.Success(ticket));
         }
     }
 }

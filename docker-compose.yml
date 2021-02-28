@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  custom.countries.api:
+    image: custom-countries-api
+    build:
+      context: ./src/api/custom-countries/
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      TZ: America/Sao_Paulo
+      LinkGithub: "https://github.com/andremco/desafio-full-stack"
+      DatabaseMongo: "countriesdb"
+      ConnectionStringMongo: "ConnectionStringMongo"
+      ASPNETCORE_ENVIRONMENT: "Development"
+  custom.countries.webapp:
+    image: custom-countries-webapp
+    build:
+      context: ./src/webapp/countries-webapp/
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"

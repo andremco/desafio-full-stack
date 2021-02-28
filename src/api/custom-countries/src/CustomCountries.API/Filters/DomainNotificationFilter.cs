@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CustomCountries.API.Filters
@@ -24,10 +24,10 @@ namespace CustomCountries.API.Filters
             if (!context.ModelState.IsValid || _domainNotification.HasNotifications)
             {
                 var validations = !context.ModelState.IsValid ?
-                    JsonConvert.SerializeObject(context.ModelState.Values
+                    JsonSerializer.Serialize(context.ModelState.Values
                         .SelectMany(x => x.Errors)
                         .Select(x => x.ErrorMessage)) :
-                    JsonConvert.SerializeObject(_domainNotification.Notifications
+                    JsonSerializer.Serialize(_domainNotification.Notifications
                         .Select(x => x.Value));
 
                 var problemDetails = new ProblemDetails
@@ -41,8 +41,8 @@ namespace CustomCountries.API.Filters
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 context.HttpContext.Response.ContentType = "application/problem+json";
 
-                using var writer = new StreamWriter(context.HttpContext.Response.Body);
-                new Newtonsoft.Json.JsonSerializer().Serialize(writer, problemDetails);
+                using var writer = new Utf8JsonWriter(context.HttpContext.Response.Body);
+                JsonSerializer.Serialize(writer, problemDetails);
                 await writer.FlushAsync();
             }
 

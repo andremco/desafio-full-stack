@@ -17,13 +17,6 @@ export function updateCountry(country) {
     }
 }
 
-export function updateCountries(countries) {
-    return {
-        type: types.countries.UPDATE,
-        countries
-    }
-}
-
 export function getAllGraphCountries() {
 
     const queryCountries = `
@@ -53,9 +46,37 @@ export function getAllGraphCountries() {
         dispatch(loading());
         return API.postByQuery(types.URL.GRAPH_COUNTRIES, queryCountries)
             .then(res => res.json())
-            .then(response => {
+            .then(async (response) => {
                 if(response && response.data && response.data.Country){
-                    dispatch(getCountries(response.data.Country))
+                    
+                    var countriesGraph = response.data.Country;
+                    var customCountries = await getAllCustomCountries();
+                    
+                    var countries = [];
+
+                    for (let countryGraph of countriesGraph) {
+
+                        let customCountry;
+                        if(Array.isArray(customCountries)){
+                            customCountry = customCountries.find(e => e.id == countryGraph._id);
+                        }
+
+                        if (customCountry) {
+                            countryGraph.name = customCountry.name
+                            countryGraph.capital = customCountry.capital
+                            countryGraph.area = customCountry.area
+                            countryGraph.population = customCountry.population
+                            countryGraph.populationDensity = customCountry.populationDensity
+                            countryGraph.isModified = true
+
+                            countries.push(countryGraph)
+                        }
+                        else{
+                            countries.push(countryGraph)
+                        }
+                    }
+
+                    dispatch(getCountries(countries))
                     dispatch(loaded())
                 }
             })
@@ -84,21 +105,15 @@ export function createCustomCountry(data, callback){
     }
 }
 
-export function getAllCustomCountries(){
-
-    return dispatch => {
-        dispatch(loading());
-        return API.getWithBasicAuth(types.URL.CUSTOM_COUNTRIES + "countries", types.AUTH)
+function getAllCustomCountries(){
+    return API.getWithBasicAuth(types.URL.CUSTOM_COUNTRIES + "countries", types.AUTH)
             .then(res => res.json())
             .then(response => {
-                dispatch(updateCountries(response));
-                dispatch(loaded())
+                return response;
             })
             .catch(err => { 
                 console.log(err)
-                dispatch(createError(err))
-                dispatch(loaded())
+                return []
             })
-    }
 }
 

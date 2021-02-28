@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6E70F4EE-B07
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8494F1DC-81D5-4136-AE95-5F0C4D9B0D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCountries.Domain", "src\CustomCountries.Domain\CustomCountries.Domain.csproj", "{705A58A6-D045-46AD-8655-FB160AADD099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCountries.Domain", "src\CustomCountries.Domain\CustomCountries.Domain.csproj", "{705A58A6-D045-46AD-8655-FB160AADD099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCountries.Data", "src\CustomCountries.Data\CustomCountries.Data.csproj", "{314B2A77-0846-41C8-9AC0-5C227EB8F674}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCountries.Data", "src\CustomCountries.Data\CustomCountries.Data.csproj", "{314B2A77-0846-41C8-9AC0-5C227EB8F674}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCountries.Application", "src\CustomCountries.Application\CustomCountries.Application.csproj", "{7143ABD3-EFAB-484A-800E-9DCA32AD73E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCountries.Application", "src\CustomCountries.Application\CustomCountries.Application.csproj", "{7143ABD3-EFAB-484A-800E-9DCA32AD73E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCountries.Unit.Tests", "test\CustomCountries.Unit.Tests\CustomCountries.Unit.Tests.csproj", "{A1F05C85-0261-4F26-A5E1-F2E570DA00CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCountries.Unit.Tests", "test\CustomCountries.Unit.Tests\CustomCountries.Unit.Tests.csproj", "{A1F05C85-0261-4F26-A5E1-F2E570DA00CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCountries.Integration.Tests", "test\CustomCountries.Integration.Tests\CustomCountries.Integration.Tests.csproj", "{BFC75F86-9244-4AA6-A0D8-25D52F08002B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCountries.Integration.Tests", "test\CustomCountries.Integration.Tests\CustomCountries.Integration.Tests.csproj", "{BFC75F86-9244-4AA6-A0D8-25D52F08002B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

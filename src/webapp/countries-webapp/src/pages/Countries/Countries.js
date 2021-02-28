@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { getAllGraphCountries, getAllCustomCountries, createCustomCountry } from "../../actions/country";
+import { getAllGraphCountries, createCustomCountry } from "../../actions/country";
 import { Card, Button, Row, Col, Navbar, Form, FormControl, InputGroup, Alert } from 'react-bootstrap';
 import MainPageLoading from '../../components/MainPageLoading';
 import DetailsModalCountry from '../../components/DetailsModalCountry';
