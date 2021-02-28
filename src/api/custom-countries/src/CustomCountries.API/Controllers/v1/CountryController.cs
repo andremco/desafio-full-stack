@@ -35,7 +35,7 @@ namespace CustomCountries.API.Controllers.v1
         {
             var countries = await _countryService.GetAllCountries();
 
-            if (countries == null || countries.Any())
+            if (countries != null && countries.Any())
             {
                 return Ok(countries);
             }
