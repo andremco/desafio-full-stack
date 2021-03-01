@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CustomCountries.API.Controllers.v1
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/v1/countries")]
     public class CountryController : ControllerBase
