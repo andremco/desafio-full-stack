@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/e945f6ed-8c00-4129-8ecd-263ec98eaf36/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/countries-sandbox",
+    "appService.deploySubpath": "build"
+}
