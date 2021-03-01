@@ -1,6 +1,6 @@
 # Projeto custom countries
 
-Projeto em React e .Net core que lista países vindo de uma api [countries graphql](https://countries-274616.ew.r.appspot.com)
+Projeto em React e .Net Core que lista países vindo de uma api [countries graphql](https://countries-274616.ew.r.appspot.com). 
 As informações vindo de [countries graphql](https://countries-274616.ew.r.appspot.com), é confrontada com uma outra api custom, para buscar informações editadas.
 
 ## Links dos projetos no azure
@@ -8,7 +8,7 @@ As informações vindo de [countries graphql](https://countries-274616.ew.r.apps
 - [webapp](https://countries-sandbox.azurewebsites.net/)
 - [api-custom-countries](https://customcountriesapi20210228221110.azurewebsites.net/swagger)
 
-## Pré requisitos para roda local
+## Pré requisitos para rodar local
 
 - Visual Studio ou algum outro IDE que rode .Net Core 3.1
 - Conexão com banco de dados NoSql MongoDB
@@ -47,4 +47,4 @@ ou simplesmente clica no arquivo deploy.bat
 
 ## Basic Auth
 A Api está protegida por uma autenticação simples, o usuário prédefinido é admin - 123456, no swagger em Authorize tem dois campos para setar username -> admin, password -> 123456.
-Ou se preferir, para fazer requisições passar o seguinte cabeçalho - -H  "Authorization: Basic YWRtaW46MTIzNDU2"
+Ou se preferir, para fazer requisições passar o seguinte cabeçalho -H "Authorization: Basic YWRtaW46MTIzNDU2"
