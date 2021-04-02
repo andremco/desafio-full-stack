@@ -3,11 +3,6 @@
 Projeto em React e .Net Core que lista países vindo de uma api [countries graphql](https://countries-274616.ew.r.appspot.com). 
 As informações vindo de [countries graphql](https://countries-274616.ew.r.appspot.com), é confrontada com uma outra api custom, para buscar informações editadas.
 
-## Links dos projetos no azure
-
-- [webapp](https://countries-sandbox.azurewebsites.net/)
-- [api-custom-countries](https://customcountriesapi20210228221110.azurewebsites.net/swagger)
-
 ## Pré requisitos para rodar local
 
 - Visual Studio ou algum outro IDE que rode .Net Core 3.1
